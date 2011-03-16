@@ -1,0 +1,21 @@
+<% title "New Rfiduser" %>
+
+<%= form_for @rfiduser do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :cardid %><br />
+    <%= f.text_field :cardid %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+
+<p><%= link_to "Back to List", rfidusers_path %></p>

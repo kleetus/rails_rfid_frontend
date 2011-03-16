@@ -1,0 +1,2 @@
+module RfidusersHelper
+end

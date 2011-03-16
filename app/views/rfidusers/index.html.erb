@@ -1,0 +1,19 @@
+<% title "Rfidusers" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Cardid</th>
+  </tr>
+  <% for rfiduser in @rfidusers %>
+    <tr>
+      <td><%= rfiduser.name %></td>
+      <td><%= rfiduser.address %></td>
+      <td><%= rfiduser.cardid %></td>
+      <td><%= link_to "Show", rfiduser %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Rfiduser", new_rfiduser_path %></p>
