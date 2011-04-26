@@ -1,4 +1,4 @@
-<% title "New Rfiduser" %>
+<% title "New User" %>
 
 <%= form_for @rfiduser do |f| %>
   <%= f.error_messages %>
@@ -7,15 +7,15 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :address %><br />
+    <%= f.label :address  %><br />
     <%= f.text_field :address %>
   </p>
   <p>
-    <%= f.label :cardid %><br />
+    <%= f.label :cardid, "Card Number" %><br />
     <%= f.text_field :cardid %>
   </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Create User" %></p>
 <% end %>
 
 
-<p><%= link_to "Back to List", rfidusers_path %></p>
+<p><%= link_to "Back to List of Users", rfidusers_path %></p>

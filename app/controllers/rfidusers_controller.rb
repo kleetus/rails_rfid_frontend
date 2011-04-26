@@ -7,6 +7,10 @@ class RfidusersController < ApplicationController
     @rfiduser = Rfiduser.find(params[:id])
   end
 
+  def deactivate
+    redirect_to :back
+  end
+  
   def new
     @rfiduser = Rfiduser.new
   end

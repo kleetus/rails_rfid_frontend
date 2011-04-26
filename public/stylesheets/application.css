@@ -73,3 +73,15 @@ a {
 .error_messages ul {
   margin: 0;
 }
+
+th {
+	background-color: #4B7399;
+	font: 14px Verdana;
+	color: white;
+}
+
+table, th, td {
+	border-collapse:collapse;
+	border: 1px solid #4B7399;
+	padding: 3px 7px 3px 10px;
+}

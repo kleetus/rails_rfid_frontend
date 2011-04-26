@@ -1,10 +1,10 @@
-<% title "Rfidusers" %>
+<% title "Primrose Creek Amenities Users" %>
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Card Holder Name</th>
     <th>Address</th>
-    <th>Cardid</th>
+    <th>Card ID (printed on card)</th>
   </tr>
   <% for rfiduser in @rfidusers %>
     <tr>
@@ -12,8 +12,10 @@
       <td><%= rfiduser.address %></td>
       <td><%= rfiduser.cardid %></td>
       <td><%= link_to "Show", rfiduser %></td>
+      <td><%= link_to "Deactivate", deactivate_url(:id => rfiduser.id) %></td>
+      <td><%= link_to "Delete", rfiduser %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Rfiduser", new_rfiduser_path %></p>
+<p><%= link_to "New User", new_rfiduser_path %></p>
