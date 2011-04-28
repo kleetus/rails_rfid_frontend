@@ -5,6 +5,7 @@ PrimroseRfid::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   resources :sessions
   resources :users
+  match 'rfidusers/dumpdb' => "rfidusers#dumpdb", :as => :dumpdb
   resources :rfidusers
 
   # The priority is based upon order of creation:

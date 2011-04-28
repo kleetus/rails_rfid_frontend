@@ -2,12 +2,20 @@ class RfidusersController < ApplicationController
   def index
     @rfidusers = Rfiduser.all
   end
+  
+  def dumpdb
+    render :text => Rfiduser.all.reject{|u| u.cardid.nil?}.collect{|u| "#{u.cardid}#{u.activated}"}.join("\n")
+  end
 
   def show
     @rfiduser = Rfiduser.find(params[:id])
   end
 
   def deactivate
+    @rfiduser = Rfiduser.find(params[:id])
+    return unless @rfiduser
+    @rfiduser.activated = 0
+    flash.notice = "#{@rfiduser.name} was deactivated." if @rfiduser.save
     redirect_to :back
   end
   
