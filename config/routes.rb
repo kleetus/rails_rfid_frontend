@@ -57,7 +57,7 @@ PrimroseRfid::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  match 'rfidusers/:id/deactivate' => "rfidusers#deactivate", :as => :deactivate
+  match 'rfidusers/:id/toggle' => "rfidusers#toggle", :as => :toggle
   root :to => "rfidusers#index"
 
   # See how all your routes lay out with "rake routes"

@@ -12,7 +12,7 @@
       <td><%= rfiduser.address %></td>
       <td><%= rfiduser.cardid %></td>
       <td><%= link_to "Show", rfiduser %></td>
-      <td><%= link_to "Deactivate", deactivate_url(:id => rfiduser.id) %></td>
+      <td><%= link_to "#{rfiduser.activated==0 ? "Activate" : "Deactivate"}", toggle_url(:id => rfiduser.id) %></td>
       <td><%= link_to "Delete", rfiduser %></td>
     </tr>
   <% end %>
