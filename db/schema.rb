@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428120504) do
+ActiveRecord::Schema.define(:version => 20110429125525) do
+
+  create_table "logs", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cardid"
+    t.string   "serveranswer"
+  end
 
   create_table "rfidusers", :force => true do |t|
     t.string   "name"

@@ -1,4 +1,6 @@
 class RfidusersController < ApplicationController
+  before_filter :login_required
+  
   def index
     @rfidusers = Rfiduser.all
   end
