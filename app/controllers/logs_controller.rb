@@ -1,6 +1,8 @@
 class LogsController < ApplicationController
   def index
-    #load all logs in the past 14 days
-    
+    @entries = Log.find(:all, :conditions => "created_at>'#{(Time.now-14.days).strftime("%Y-%m-%d")}'")
+  end
+  
+  def search
   end
 end
