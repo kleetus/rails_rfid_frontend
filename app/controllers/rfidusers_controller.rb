@@ -1,4 +1,6 @@
 class RfidusersController < ApplicationController
+  before_filter :login_required
+  
   def index
     @rfidusers = Rfiduser.all
   end
@@ -11,11 +13,12 @@ class RfidusersController < ApplicationController
     @rfiduser = Rfiduser.find(params[:id])
   end
 
-  def deactivate
+  def toggle
     @rfiduser = Rfiduser.find(params[:id])
     return unless @rfiduser
-    @rfiduser.activated = 0
-    flash.notice = "#{@rfiduser.name} was deactivated." if @rfiduser.save
+    @rfiduser.toggle
+    de = @rfiduser.activated==0 ? "de" : ""
+    flash.notice = "#{@rfiduser.name} was #{de}activated." if @rfiduser.save
     redirect_to :back
   end
   

@@ -8,6 +8,7 @@ gem 'rails', '3.0.7'
 gem 'sqlite3'
 gem 'nifty-generators', :group => :development
 gem 'haml'
+gem 'mysql'
 
 # Use unicorn as the web server
 # gem 'unicorn'
