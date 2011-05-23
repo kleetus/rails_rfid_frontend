@@ -1,7 +1,6 @@
 ENV['RAILS_ROOT'] = '../'
 require "#{ENV['RAILS_ROOT']}/config/environment"
 
-
 import_file = open('/Users/ckleeschulte/Desktop/Primrose Creek Badges.csv', 'r')
 rfid_mapping = open('/Users/ckleeschulte/rfid_mapping.txt', 'r')
 map = {}
@@ -12,6 +11,9 @@ rfid_mapping.each_line do |l|
   map[la.join('')] = internal_card
 end
 
+Rfiduser.all.each do |r|
+  r.destroy
+end
 
 import_file.each_line do |l|
   # First Name,Last Name,BadgeID,House Number,Street
@@ -30,12 +32,15 @@ import_file.each_line do |l|
   end
   next if cardid.blank?
   a=Rfiduser.new
-  a.name=name
-  a.address="#{line_array[3]} #{line_array[4]}"
+  a.name=name.rstrip
+  address = "#{line_array[3].chomp} #{line_array[4]}"
+  address = "" if /#N\/A/ =~ address
+  a.address=address
   a.cardid=cardid
-  a.activated=0
+  a.activated=1
   a.save!
+  ap a
 end
 
-#puts map.keys
+#ap map.keys
 
