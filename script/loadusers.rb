@@ -28,7 +28,13 @@ import_file.each_line do |l|
       end
     end
   end
-  puts l if cardid.blank?
+  next if cardid.blank?
+  a=Rfiduser.new
+  a.name=name
+  a.address="#{line_array[3]} #{line_array[4]}"
+  a.cardid=cardid
+  a.activated=0
+  a.save!
 end
 
 #puts map.keys
