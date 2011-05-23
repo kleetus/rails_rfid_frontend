@@ -33,13 +33,13 @@ import_file.each_line do |l|
   next if cardid.blank?
   a=Rfiduser.new
   a.name=name.rstrip
-  address = "#{line_array[3].chomp} #{line_array[4]}"
+  address = line_array[3].chomp
   address = "" if /#N\/A/ =~ address
   a.address=address
   a.cardid=cardid
   a.activated=1
   a.save!
-  ap a
+  #ap a
 end
 
 #ap map.keys
