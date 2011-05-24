@@ -4,7 +4,7 @@ PrimroseRfid::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
   resources :sessions
-  resources :users
+  #resources :users
   match 'rfidusers/dumpdb' => "rfidusers#dumpdb", :as => :dumpdb
   resources :rfidusers
   resources :logs
