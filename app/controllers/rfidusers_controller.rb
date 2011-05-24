@@ -2,7 +2,11 @@ class RfidusersController < ApplicationController
   before_filter :login_required
   
   def index
-    @rfidusers = Rfiduser.all
+    conditions = ""
+    if params.has_key? "activated"
+      conditions = "activated=#{params[:activated]}" if params[:activated].length == 1
+    end
+    @rfidusers = Rfiduser.find(:all, :conditions => conditions)
   end
   
   def dumpdb
