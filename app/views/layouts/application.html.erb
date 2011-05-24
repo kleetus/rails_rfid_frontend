@@ -10,6 +10,9 @@
   </head>
   <body>
     <div id="container">
+      <div id="logout">
+        <%= link_to "logout", logout_url %>
+      </div>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}",:class => "fade_away" %>
       <% end %>

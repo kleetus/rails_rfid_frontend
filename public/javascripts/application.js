@@ -3,5 +3,5 @@
 
   
 $(document).ready(function(){
-  $('.fade_away').fadeOut(5000);
+  $('.fade_away').fadeOut(2000);
 });

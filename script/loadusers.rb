@@ -30,6 +30,7 @@ import_file.each_line do |l|
       end
     end
   end
+  puts l if cardid.blank?
   next if cardid.blank?
   a=Rfiduser.new
   a.name=name.rstrip

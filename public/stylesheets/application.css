@@ -85,3 +85,14 @@ table, th, td {
 	border: 1px solid #4B7399;
 	padding: 3px 7px 3px 10px;
 }
+
+#logout {
+  float: right;
+  margin: auto 10px;
+}
+
+.fade_away {
+  position: absolute;
+  top: 28px;
+  left: 250px;
+}
