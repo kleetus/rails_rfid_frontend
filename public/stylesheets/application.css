@@ -4,6 +4,15 @@ body {
   font-size: 14px;
 }
 
+h1 {
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 14px;
+  color: #888888;
+}
+
 a img {
   border: none;
 }
@@ -34,7 +43,7 @@ a {
 
 #flash_notice {
   background-color: #CFC;
-  border: solid 1px #6C6;
+  border: solid 1px #CCCCCC;
 }
 
 #flash_error, #flash_alert {
@@ -93,6 +102,14 @@ table, th, td {
 
 .fade_away {
   position: absolute;
-  top: 28px;
+  top: 23px;
   left: 250px;
 }
+
+.even {
+   background-color: #FFFFFF; 
+ }
+ 
+.odd {
+   background-color: #AAAAAA; 
+ }

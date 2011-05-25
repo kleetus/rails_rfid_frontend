@@ -1,4 +1,19 @@
-<% title "Primrose Creek Amenities Users" %>
+<%- count=0 %>
+<%title "Primrose Creek Amenities Users" %>
+<h2>User Stats:</h2>
+<table>
+  <tr>
+    <th>Total number</th>
+    <th>Total active</th>
+    <th>Total inactive</th>
+  </tr>  
+  <tr>
+      <td><%= @total %>
+      <td><%= @total-@deactive %>
+      <td><%= @deactive %>
+  </tr>
+</table>
+<p>
 <div>
   Show Only:  
   <%= link_to "Deactivated", "?activated=0" %> |
@@ -7,12 +22,14 @@
 <p>
 <table>
   <tr>
+    <th></th>
     <th>Card Holder Name</th>
     <th>Address</th>
-    <th>Card ID (printed on card)</th>
+    <th>Card ID (internal to card)</th>
   </tr>
   <% for rfiduser in @rfidusers %>
-    <tr>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= count+=1 %></td>
       <td><%= rfiduser.name %></td>
       <td><%= rfiduser.address %></td>
       <td><%= rfiduser.cardid %></td>
