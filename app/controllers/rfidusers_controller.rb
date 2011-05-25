@@ -13,6 +13,14 @@ class RfidusersController < ApplicationController
     end.compact!  
   end
   
+  def search
+    @rfidusers = Rfiduser.all
+    @rfidusers.collect! do |u|
+      u if u.name =~ %r{#{params[:name]}}i
+    end.compact!  
+    render :action => :index
+  end
+  
   def dumpdb
     render :text => Rfiduser.all.reject{|u| u.cardid.nil?}.collect{|u| "#{u.cardid}#{u.activated}"}.join("\n")
   end
