@@ -1,1 +1,1 @@
-rvm 1.9.2@furious-night-616
+rvm use --create 1.9.2@rails_rfid_frontend
