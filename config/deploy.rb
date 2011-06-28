@@ -25,17 +25,16 @@ role :db,  "kleetus-xen.dyndns.org", :primary => true
 namespace :deploy do
   desc "deploy restart"
   task :restart, :roles => :app, :except => {:no_release => true} do
-    run "#{current_path}/bundle exec unicorn_exec stop"
+    stop
+    start
+  end
+
+  task :start, :roles => :app, :except => {:no_release => true} do
     run "cd #{current_path} && bundle exec unicorn_exec start"
+  end
+
+  task :stop, :roles => :app, :except => {:no_release => true} do
+    run "#{current_path}/bundle exec unicorn_exec stop"
   end
 end
 
-desc "start unicorn"
-task :start, :roles => :app, :except => {:no_release => true} do
-  run "cd #{current_path} && bundle exec unicorn_exec start"
-end
-
-desc "stop unicorn"
-task :stop, :roles => :app, :except => {:no_release => true} do
-  run "#{current_path}/bundle exec unicorn_exec stop"
-end
