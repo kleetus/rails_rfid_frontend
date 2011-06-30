@@ -26,7 +26,8 @@ namespace :deploy do
   end
   
   task :restart, :roles => :app, :except => {:no_release => true} do
-    run 'sudo /etc/init.d/unicorn restart'
+    stop
+    start
     cleanup
   end
   
