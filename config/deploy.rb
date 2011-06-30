@@ -20,20 +20,21 @@ role :web, "kleetus-xen.dyndns.org"
 role :app, "kleetus-xen.dyndns.org"
 role :db,  "kleetus-xen.dyndns.org", :primary => true
 
-
 namespace :deploy do
-  # desc "deploy restart"
-  task :restart, :roles => :app, :except => {:no_release => true} do
-    # stop
-    # start
+  after 'deploy:symlink' do
+    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   end
-  # 
-  # task :start, :roles => :app, :except => {:no_release => true} do
-  #   run "cd #{current_path} && bundle exec unicorn_exec start"
-  # end
-  # 
-  # task :stop, :roles => :app, :except => {:no_release => true} do
-  #   run "#{current_path}/bundle exec unicorn_exec stop"
-  # end
+  
+  task :restart, :roles => :app, :except => {:no_release => true} do
+    run 'sudo /etc/init.d/unicorn restart'
+    cleanup
+  end
+  
+  task :start, :roles => :app, :except => {:no_release => true} do
+    run 'sudo /etc/init.d/unicorn start'
+  end
+  
+  task :stop, :roles => :app, :except => {:no_release => true} do
+    run 'sudo /etc/init.d/unicorn stop'
+  end
 end
-
