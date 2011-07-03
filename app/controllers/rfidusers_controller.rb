@@ -1,5 +1,5 @@
 class RfidusersController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :except => 'dumpdb'
   
   def index
     @rfidusers = Rfiduser.all
@@ -22,7 +22,7 @@ class RfidusersController < ApplicationController
   end
   
   def dumpdb
-    render :text => Rfiduser.all.reject{|u| u.cardid.nil?}.collect{|u| "#{u.cardid}#{u.activated}"}.join("\n")
+    render :text => Rfiduser.all.reject{|u| u.cardid.nil? or u.cardid == "" }.collect{|u| "#{u.cardid}#{u.activated}"}.join("\n")
   end
 
   def show
