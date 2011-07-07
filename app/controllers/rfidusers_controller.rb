@@ -33,7 +33,7 @@ class RfidusersController < ApplicationController
     @rfiduser = Rfiduser.find(params[:id])
     @rfiduser.update_attributes(params[:rfiduser])
     if @rfiduser.save
-      flash[:notice] = "User's info save."
+      flash[:notice] = "User's info saved."
     else
       flash[:notice] = "Error. Try again and make sure all fields are filled in."
     end

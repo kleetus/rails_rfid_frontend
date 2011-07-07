@@ -112,7 +112,7 @@ table, th, td {
  }
  
 .odd {
-   background-color: #AAAAAA; 
+   background-color: #CCCCCC; 
  }
 
 table, th, td
@@ -122,4 +122,9 @@ table, th, td
 
 #rfiduser_submit {
   margin: 20px 0px 0px 400px;
+}
+
+#footer {
+  font-size: small;
+  text-align: center;
 }
