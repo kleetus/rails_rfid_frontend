@@ -24,11 +24,22 @@ class RfidusersController < ApplicationController
   def dumpdb
     render :text => Rfiduser.all.reject{|u| u.cardid.nil? or u.cardid == "" }.collect{|u| "#{u.cardid}#{u.activated}"}.join("\n")
   end
-
-  def show
+  
+  def edit
     @rfiduser = Rfiduser.find(params[:id])
   end
 
+  def update
+    @rfiduser = Rfiduser.find(params[:id])
+    @rfiduser.update_attributes(params[:rfiduser])
+    if @rfiduser.save
+      flash[:notice] = "User's info save."
+    else
+      flash[:notice] = "Error. Try again and make sure all fields are filled in."
+    end
+    redirect_to rfidusers_url
+  end
+  
   def toggle
     @rfiduser = Rfiduser.find(params[:id])
     return unless @rfiduser
@@ -36,18 +47,5 @@ class RfidusersController < ApplicationController
     de = @rfiduser.activated==0 ? "de" : ""
     flash.notice = "#{@rfiduser.name} was #{de}activated." if @rfiduser.save
     redirect_to :back
-  end
-  
-  def new
-    @rfiduser = Rfiduser.new
-  end
-
-  def create
-    @rfiduser = Rfiduser.new(params[:rfiduser])
-    if @rfiduser.save
-      redirect_to @rfiduser, :notice => "Successfully created rfiduser."
-    else
-      render :action => 'new'
-    end
-  end
+  end  
 end

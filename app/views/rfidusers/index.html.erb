@@ -22,7 +22,6 @@
       </tr>
     </table>
     <p>
-
     <div>
       Show Only:  
         <%= link_to "Deactivated", "?activated=0" %> |
@@ -30,15 +29,14 @@
     </div>
     <p>
 <% end %>
-<p><%= link_to "reload full page", rfidusers_url %></p>
-<p><%= link_to "New User", new_rfiduser_path %></p>
+<p><%= link_to "reload page", rfidusers_url %></p>
 <table>
   <tr>
     <th></th>
     <th>Card Holder Name</th>
     <th>Address</th>
-    <th>Card ID (internal to card)</th>
-    <th></th>
+    <th>Internal Card ID (internal to card)</th>
+    <th>External Card ID (internal to card)</th>
     <th></th>
     <th></th>
   </tr>
@@ -49,13 +47,12 @@
         <td><%= rfiduser.name %></td>
         <td><%= rfiduser.address %></td>
         <td><%= rfiduser.cardid %></td>
-        <td><%= link_to "Show", rfiduser %></td>
+        <td><%= rfiduser.outsidecardid %></td>
+        <td><%= link_to "Edit", edit_rfiduser_path(rfiduser) %></td>
         <td><%= link_to "#{(rfiduser.activated.nil? or rfiduser.activated==0) ? "Activate" : "Deactivate"}", toggle_url(:id => rfiduser.id) %></td>
-        <td><%= link_to "Delete", rfiduser %></td>
       </tr>
     <% end %>
   <% else %>
     <tr><td colspan='7'>no results found</td></tr>  
   <% end %>
 </table>  
-<p><%= link_to "New User", new_rfiduser_path %></p>

@@ -1,5 +1,5 @@
 body {
-  background-color: #ff0000;
+  background-color: #56aaff;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -114,3 +114,12 @@ table, th, td {
 .odd {
    background-color: #AAAAAA; 
  }
+
+table, th, td
+{
+  border: 1px solid #bbbbbb;
+}
+
+#rfiduser_submit {
+  margin: 20px 0px 0px 400px;
+}

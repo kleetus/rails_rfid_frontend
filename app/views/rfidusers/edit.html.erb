@@ -1,0 +1,42 @@
+<% title "Rfiduser" %>
+
+<%= form_for @rfiduser do |f| %>
+<table>
+  <tr>
+      <td>
+        <%= f.label "Name:" %>
+      </td>
+      <td>
+        <%= f.text_field :name %>
+      </td>
+  </tr>
+  <tr>
+      <td>
+        <%= f.label "Address:" %>
+      </td>
+      <td>
+        <%= f.text_field :address %>
+      </td>
+  </tr>
+  <tr>
+      <td>
+        <%= f.label "Internal Card id (rarely edited):" %>
+      </td>
+      <td>
+        <%= f.text_field :cardid %>
+      </td>
+  </tr>
+  <tr>
+      <td>
+        <%= f.label "Outside Card id:" %>
+      </td>
+      <td>
+        <%= f.text_field :outsidecardid %>
+      </td>
+  </tr> 
+</table>
+<%= f.submit "Save" %> 
+<% end %>
+<p>
+  <%= link_to "View All", rfidusers_path %>
+</p>
